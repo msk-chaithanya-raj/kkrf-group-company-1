@@ -1,0 +1,269 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.hero {
+    background-image: url('path-to-hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh; 
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background-color: #000;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #000;
+    color: white;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    height: 40px;
+}
+
+.navbar-toggler {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    display: none;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-item {
+    margin-right: 1rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #495057;
+    border-radius: 4px;
+}
+
+.nav-link:active {
+    text-decoration: underline;
+}
+
+.dropdown-menu {
+    display: none;
+    list-style-type: none;
+    background-color: #495057;
+    padding: 0.5rem 0;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease, max-height 0.5s ease;
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+}
+
+.dropdown-menu.show {
+    display: block;
+    opacity: 1;
+    max-height: 500px;
+}
+
+.dropdown-toggle i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown.show .dropdown-toggle i {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #6c757d;
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    background: none;
+    border: 1px solid white;
+    padding: 0.5rem 1rem;
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #495057;
+}
+
+.search-btn i, .country-btn i {
+    margin-right: 0.5rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .hero {
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar-links {
+        display: none;
+    }
+
+    .navbar-links.active {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        padding: 2rem;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-item {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .navbar-toggler {
+        display: block;
+        order: 0;
+    }
+    .navbar-brand {
+        order: 1;
+    }
+
+    .navbar-toggler-icon {
+        background-color: white;
+        width: 30px;
+        height: 3px;
+        display: block;
+        position: relative;
+    }
+
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+        content: '';
+        background-color: white;
+        width: 30px;
+        height: 3px;
+        display: block;
+        position: absolute;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-toggler-icon::before {
+        top: -8px;
+    }
+
+    .navbar-toggler-icon::after {
+        top: 8px;
+    }
+
+    .navbar-links.active .navbar-toggler-icon::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .navbar-links.active .navbar-toggler-icon::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    /* Close Button */
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .close-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+    .navbar-actions {
+        order: 3;
+    }
+}
+
+/* Desktop View - hide the toggler */
+@media (min-width: 769px) {
+    .navbar-toggler {
+        display: none;
+    }
+
+    .close-btn {
+        display: none;
+    }
+}
